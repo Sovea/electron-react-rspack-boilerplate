@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  cli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.21.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm --dir packages/create-electron-react pack
+
+  templates:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        bundler: [vite, rspack]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.21.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - name: Generate project
+        run: >-
+          node packages/create-electron-react/dist/cli.js
+          .tmp/${{ matrix.bundler }}-app
+          --bundler ${{ matrix.bundler }}
+      - name: Install generated project
+        working-directory: .tmp/${{ matrix.bundler }}-app
+        run: pnpm install
+      - name: Check generated project
+        working-directory: .tmp/${{ matrix.bundler }}-app
+        run: pnpm check
+      - name: Build generated project
+        working-directory: .tmp/${{ matrix.bundler }}-app
+        run: pnpm build
+      - name: Package generated project
+        working-directory: .tmp/${{ matrix.bundler }}-app
+        run: pnpm exec electron-builder --dir
