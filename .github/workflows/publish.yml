@@ -106,7 +106,6 @@ jobs:
           [[ "$(npm --version)" == "$NPM_VERSION" ]]
 
       - name: Prepare package version
-        working-directory: packages/create-electron-react
         shell: bash
         env:
           RELEASE_VERSION: ${{ steps.release.outputs.version }}
@@ -134,11 +133,9 @@ jobs:
           pnpm build
 
       - name: Verify package contents
-        working-directory: packages/create-electron-react
         run: npm pack --dry-run --ignore-scripts
 
       - name: Publish to npm with trusted publishing
-        working-directory: packages/create-electron-react
         env:
           DIST_TAG: ${{ steps.release.outputs.dist_tag }}
         run: npm publish --access public --tag "$DIST_TAG"

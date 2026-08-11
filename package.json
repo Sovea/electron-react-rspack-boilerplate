@@ -1,16 +1,50 @@
 {
-  "name": "electron-react-starter",
+  "name": "@sovea/create-electron-react",
   "version": "0.0.0",
-  "private": true,
   "description": "Create Electron applications with React, TypeScript, and Vite or Rspack",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "create-electron-react": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "templates",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sovea/electron-react-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sovea/electron-react-boilerplate/issues"
+  },
+  "homepage": "https://github.com/Sovea/electron-react-boilerplate#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "packageManager": "pnpm@11.21.0",
   "engines": {
-    "node": ">=22.12.0",
-    "pnpm": ">=11"
+    "node": ">=22.12.0"
   },
   "scripts": {
-    "build": "pnpm --filter @sovea/create-electron-react build",
-    "check": "pnpm --filter @sovea/create-electron-react check",
-    "test": "pnpm --filter @sovea/create-electron-react test"
+    "build": "tsc -p tsconfig.json",
+    "check": "biome check src tests templates && tsc -p tsconfig.json --noEmit",
+    "prepack": "pnpm build",
+    "test": "tsx --test tests/*.test.ts tests/*.test.tsx"
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "ink": "^7.1.1",
+    "react": "^19.2.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.7",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "ink-testing-library": "^4.0.0",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
   }
 }

@@ -21,7 +21,7 @@ jobs:
       - run: pnpm check
       - run: pnpm test
       - run: pnpm build
-      - run: pnpm --dir packages/create-electron-react pack
+      - run: pnpm pack
 
   templates:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
       - run: pnpm build
       - name: Generate project
         run: >-
-          node packages/create-electron-react/dist/cli.js
+          node dist/cli.js
           .tmp/${{ matrix.bundler }}-app
           --bundler ${{ matrix.bundler }}
       - name: Install generated project
