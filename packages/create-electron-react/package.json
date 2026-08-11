@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "create-electron-react": "./dist/cli.js"
+    "create-electron-react": "dist/cli.js"
   },
   "files": [
     "dist",
