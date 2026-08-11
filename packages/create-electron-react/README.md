@@ -3,15 +3,15 @@
 Create an Electron application with React and TypeScript. Choose Vite or Rspack as the bundler.
 
 ```bash
-pnpm create @sovea/electron-react@latest
-pnpm create @sovea/electron-react@latest my-app --bundler vite
-pnpm create @sovea/electron-react@latest my-app --bundler rspack
+pnpm create @sovea/electron-react@next
+pnpm create @sovea/electron-react@next my-app --bundler vite
+pnpm create @sovea/electron-react@next my-app --bundler rspack
 ```
 
 With npm:
 
 ```bash
-npm create @sovea/electron-react@latest
+npm create @sovea/electron-react@next
 ```
 
 The published package is `@sovea/create-electron-react`; package managers add

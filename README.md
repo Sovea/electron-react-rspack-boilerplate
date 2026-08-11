@@ -11,5 +11,5 @@ A **modern**, **unopinionated**, **pure** boilerplate for developing electron ap
 ## Usage
 
 ```bash
-npm create @sovea/electron-react@latest
+npm create @sovea/electron-react@next
 ```
