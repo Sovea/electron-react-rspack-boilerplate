@@ -1,51 +1,16 @@
 {
-  "name": "electron-react-rspack",
-  "description": "Electron React Rspack TypeScript Template",
-  "author": "Sovea",
+  "name": "electron-react-starter",
+  "version": "0.0.0",
   "private": true,
-  "version": "1.0.0",
-  "main": "dist/main/index.js",
-  "scripts": {
-    "start": "electron .",
-    "dev": "concurrently \"npm run dev:main\" \"npm run dev:preload\" \"npm run dev:renderer\"",
-    "dev:main": "cross-env NODE_OPTIONS='--experimental-transform-types' NODE_ENV=development rspack -c ./configs/rspack/rspack.main.config.ts --watch",
-    "dev:preload": "cross-env NODE_OPTIONS='--experimental-transform-types' NODE_ENV=development  rspack -c ./configs/rspack/rspack.preload.config.ts --watch",
-    "dev:renderer": "cross-env NODE_OPTIONS='--experimental-transform-types' NODE_ENV=development rspack serve -c ./configs/rspack/rspack.renderer.config.ts",
-    "build": "npm run build:main && npm run build:preload && npm run build:renderer",
-    "build:main": "cross-env NODE_OPTIONS='--experimental-transform-types' NODE_ENV=production rspack build -c ./configs/rspack/rspack.main.config.ts",
-    "build:preload": "cross-env NODE_OPTIONS='--experimental-transform-types' NODE_ENV=production rspack build -c ./configs/rspack/rspack.preload.config.ts",
-    "build:renderer": "cross-env NODE_OPTIONS='--experimental-transform-types' NODE_ENV=production rspack build -c ./configs/rspack/rspack.renderer.config.ts",
-    "package": "electron-builder --config",
-    "pack": "npm run build && npm run package"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.1.4",
-    "@rspack/cli": "^1.4.11",
-    "@rspack/core": "^1.4.11",
-    "@rspack/dev-server": "^1.1.2",
-    "@rspack/plugin-react-refresh": "^1.4.3",
-    "@types/finalhandler": "^1.2.4",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "concurrently": "^9.1.2",
-    "cross-env": "^7.0.3",
-    "electron": "^37.0.0",
-    "electron-builder": "^26.0.12",
-    "esbuild": "^0.25.5",
-    "esbuild-register": "^3.6.0",
-    "finalhandler": "^2.1.0",
-    "glob": "^11.0.2",
-    "lefthook": "^1.12.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-refresh": "^0.17.0",
-    "serve-static": "^2.2.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "webpack-merge": "^6.0.1"
-  },
+  "description": "Create Electron applications with React, TypeScript, and Vite or Rspack",
+  "packageManager": "pnpm@11.21.0",
   "engines": {
-    "node": ">=22.7.0",
-    "pnpm": ">=10"
+    "node": ">=22.12.0",
+    "pnpm": ">=11"
+  },
+  "scripts": {
+    "build": "pnpm --filter @sovea/create-electron-react build",
+    "check": "pnpm --filter @sovea/create-electron-react check",
+    "test": "pnpm --filter @sovea/create-electron-react test"
   }
 }

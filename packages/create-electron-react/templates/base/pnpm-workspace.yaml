@@ -1,8 +1,7 @@
-packages:
-  - packages/*
-
 engineStrict: true
 
 allowBuilds:
   '@biomejs/biome': true
+  electron: true
+  electron-winstaller: false
   esbuild: true

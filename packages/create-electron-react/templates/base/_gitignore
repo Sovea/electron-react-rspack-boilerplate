@@ -6,11 +6,8 @@
 # Dependencies and output
 node_modules/
 dist/
-coverage/
-build/
-
-# Generated smoke projects
-.tmp/
+release/
+.electron/
 
 # IDE
 .vscode/*
